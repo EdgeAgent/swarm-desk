@@ -18,6 +18,19 @@
 
 **A swarm of nine persona agents debates an asset for two rounds — and hands your trading desk one confidence number it can gate on.**
 
+## One-command setup
+
+```bash
+./setup.sh        # Windows: .\setup.ps1
+```
+
+That creates a virtualenv, installs Swarm Desk with its MCP door,
+runs the checks and finishes with the demo. The full
+stranger-friendly guide — manual install, every door, and
+troubleshooting — is in [QUICKSTART.md](QUICKSTART.md); worked agent
+examples (MCP config, HTTP client, Python client) live in
+[examples/](examples/README.md).
+
 ## Why
 
 The H-QRD Trading Desk runs a 4-agent pipeline. Agent 02 — the
