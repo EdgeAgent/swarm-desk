@@ -94,6 +94,35 @@ def cmd_run(args) -> int:
     return 0
 
 
+def cmd_leaderboard(args) -> int:
+    from .leaderboard import mimic_status, persona_leaderboard
+    from .ledger import read_entries
+
+    ledger = args.ledger or default_ledger_path()
+    entries = read_entries(ledger)
+    sources = set(args.sources) if args.sources else None
+    board = persona_leaderboard(entries, sources=sources)
+    if not board:
+        print("Leaderboard is empty — no ledger entries match.")
+        return 0
+    total_pred = board[0]["predictions"]
+    total_scored = board[0]["scored"]
+    print(f"Signal Leaderboard — {total_pred} predictions per persona, "
+          f"{total_scored} scored"
+          + (f" (sources: {', '.join(sorted(sources))})" if sources else ""))
+    header = (f"{'Persona':<26}{'Pred':>5}{'Scored':>7}{'Hits':>5}"
+              f"{'Hit%':>6}{'AvgConf':>8}  Status")
+    print(header)
+    print("-" * len(header))
+    for r in board:
+        hit = f"{r['hit_rate']:.0%}" if r["hit_rate"] is not None else "—"
+        print(f"{r['display']:<26}{r['predictions']:>5}{r['scored']:>7}"
+              f"{r['hits']:>5}{hit:>6}{r['avg_confidence']:>8.2f}  "
+              f"{r['status']}")
+    print(f"\nFollow the proven leader: {mimic_status(board)['message']}")
+    return 0
+
+
 def cmd_serve(args) -> int:
     from .api import serve
 
@@ -137,6 +166,15 @@ def build_parser() -> argparse.ArgumentParser:
     p_run.add_argument("--ledger", default=None)
     p_run.add_argument("--llm", action="store_true")
     p_run.set_defaults(func=cmd_run)
+
+    p_board = sub.add_parser(
+        "leaderboard",
+        help="persona track record + proven-leader (mimic) status")
+    p_board.add_argument("--ledger", default=None)
+    p_board.add_argument("--sources", nargs="*", default=None,
+                         help="only count entries with these inputs.source "
+                              "values (e.g. live-test-2026-11-05)")
+    p_board.set_defaults(func=cmd_leaderboard)
 
     p_serve = sub.add_parser("serve", help="run the HTTP API server")
     p_serve.add_argument("--port", type=int, default=8799)

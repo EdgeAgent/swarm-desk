@@ -176,6 +176,21 @@ This is REA discipline applied to the signal itself: **a prediction is
 a hypothesis, the ledger is the experiment log, and the swarm earns
 trust only from scored results** — failures included, nothing deleted.
 
+## Signal Leaderboard (the honest "mimic")
+
+`swarm-desk leaderboard` (module `swarm_desk/leaderboard.py`) ranks the
+nine personas by their ledger track record: predictions made, outcomes
+scored, hit rate (sign of a persona's final stance vs the realized
+direction), and average confidence. Use `--sources live-test-2026-11-05`
+to score only the frozen real-data experiment.
+
+The "Follow the proven leader" verdict is deliberately hard to earn: a
+persona becomes followable — as a paper-only weighting inside the desk,
+never auto-execution, never real money, never copying an external
+trader — only with **≥10 scored predictions and a ≥60% hit rate**.
+Until then the board reads: *"No proven leader yet — ledger has not
+earned a mimic signal."*
+
 ## Repo structure
 
 ```
