@@ -1,0 +1,242 @@
+{
+  "openai": [
+    {
+      "type": "function",
+      "function": {
+        "name": "run_swarm",
+        "description": "Run the Swarm Desk persona swarm on one asset and return the aggregated verdict: mean stance, bullish/bearish split, a confidence in 0..1, and the H-QRD Agent 02 gate call (KEEP at confidence >= 0.70, otherwise PRUNE-CANDIDATE). The run is appended to the experiment ledger.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "asset": {
+              "type": "string",
+              "description": "Ticker symbol, e.g. NVDA"
+            },
+            "signals": {
+              "type": "object",
+              "description": "Signal inputs, all optional. momentum/sentiment/value in -1..+1, volatility in 0..1.",
+              "properties": {
+                "momentum": {
+                  "type": "number",
+                  "minimum": -1,
+                  "maximum": 1
+                },
+                "volatility": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "value": {
+                  "type": "number",
+                  "minimum": -1,
+                  "maximum": 1
+                },
+                "sentiment": {
+                  "type": "number",
+                  "minimum": -1,
+                  "maximum": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            "headlines": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Recent headlines about the asset."
+            },
+            "rounds": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 2
+            },
+            "seed": {
+              "type": "integer",
+              "default": 42
+            }
+          },
+          "required": [
+            "asset"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "check_gate",
+        "description": "Map a Swarm Desk confidence (0..1) onto the H-QRD Agent 02 prune gate: KEEP when confidence >= 0.70, otherwise PRUNE-CANDIDATE.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "confidence": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          "required": [
+            "confidence"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "list_personas",
+        "description": "List the swarm's agent personas with their reasoning styles, signal weights, biases, noise scales and herd coefficients.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "score_outcome",
+        "description": "Attach a realized outcome to a past ledger entry so the prediction can be scored. Identify the entry by ledger_id, or by the (timestamp, asset) pair returned when it was run.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "ledger_id": {
+              "type": "string"
+            },
+            "timestamp": {
+              "type": "string"
+            },
+            "asset": {
+              "type": "string"
+            },
+            "outcome": {
+              "description": "The realized outcome, e.g. the asset's return over the scoring window (0.05 = +5%), or a short label."
+            }
+          },
+          "required": [
+            "outcome"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "mcp": [
+    {
+      "name": "run_swarm",
+      "description": "Run the Swarm Desk persona swarm on one asset and return the aggregated verdict: mean stance, bullish/bearish split, a confidence in 0..1, and the H-QRD Agent 02 gate call (KEEP at confidence >= 0.70, otherwise PRUNE-CANDIDATE). The run is appended to the experiment ledger.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "asset": {
+            "type": "string",
+            "description": "Ticker symbol, e.g. NVDA"
+          },
+          "signals": {
+            "type": "object",
+            "description": "Signal inputs, all optional. momentum/sentiment/value in -1..+1, volatility in 0..1.",
+            "properties": {
+              "momentum": {
+                "type": "number",
+                "minimum": -1,
+                "maximum": 1
+              },
+              "volatility": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "value": {
+                "type": "number",
+                "minimum": -1,
+                "maximum": 1
+              },
+              "sentiment": {
+                "type": "number",
+                "minimum": -1,
+                "maximum": 1
+              }
+            },
+            "additionalProperties": false
+          },
+          "headlines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Recent headlines about the asset."
+          },
+          "rounds": {
+            "type": "integer",
+            "minimum": 1,
+            "default": 2
+          },
+          "seed": {
+            "type": "integer",
+            "default": 42
+          }
+        },
+        "required": [
+          "asset"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "check_gate",
+      "description": "Map a Swarm Desk confidence (0..1) onto the H-QRD Agent 02 prune gate: KEEP when confidence >= 0.70, otherwise PRUNE-CANDIDATE.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "required": [
+          "confidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "list_personas",
+      "description": "List the swarm's agent personas with their reasoning styles, signal weights, biases, noise scales and herd coefficients.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "score_outcome",
+      "description": "Attach a realized outcome to a past ledger entry so the prediction can be scored. Identify the entry by ledger_id, or by the (timestamp, asset) pair returned when it was run.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ledger_id": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string"
+          },
+          "asset": {
+            "type": "string"
+          },
+          "outcome": {
+            "description": "The realized outcome, e.g. the asset's return over the scoring window (0.05 = +5%), or a short label."
+          }
+        },
+        "required": [
+          "outcome"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ]
+}

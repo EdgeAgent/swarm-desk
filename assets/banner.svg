@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-label="Swarm Desk - swarm-sentiment engine for the H-QRD Trading Desk">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1020"/>
+      <stop offset="1" stop-color="#101A2E"/>
+    </linearGradient>
+    <linearGradient id="titleGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFD34D"/>
+      <stop offset="1" stop-color="#F0B90B"/>
+    </linearGradient>
+    <linearGradient id="waveGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2DD4BF"/>
+      <stop offset="1" stop-color="#FFD34D"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="320" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="320" fill="none" stroke="#1E2A3D" stroke-width="2"/>
+
+  <!-- node school, top-left: a loose fish-like formation -->
+  <g stroke="#2DD4BF" stroke-width="1.4" opacity="0.55">
+    <line x1="70" y1="82" x2="128" y2="64"/>
+    <line x1="128" y1="64" x2="192" y2="58"/>
+    <line x1="192" y1="58" x2="248" y2="72"/>
+    <line x1="70" y1="82" x2="120" y2="104"/>
+    <line x1="120" y1="104" x2="186" y2="96"/>
+    <line x1="186" y1="96" x2="248" y2="72"/>
+    <line x1="128" y1="64" x2="186" y2="96"/>
+    <line x1="192" y1="58" x2="186" y2="96"/>
+  </g>
+  <g fill="#2DD4BF">
+    <circle cx="70" cy="82" r="5"/>
+    <circle cx="128" cy="64" r="6"/>
+    <circle cx="192" cy="58" r="5"/>
+    <circle cx="248" cy="72" r="7" fill="#FFD34D"/>
+    <circle cx="120" cy="104" r="4"/>
+    <circle cx="186" cy="96" r="5"/>
+  </g>
+
+  <!-- node cluster, top-right -->
+  <g stroke="#2DD4BF" stroke-width="1.4" opacity="0.55">
+    <line x1="952" y1="72" x2="1010" y2="54"/>
+    <line x1="1010" y1="54" x2="1074" y2="66"/>
+    <line x1="1074" y1="66" x2="1130" y2="88"/>
+    <line x1="952" y1="72" x2="1018" y2="98"/>
+    <line x1="1018" y1="98" x2="1074" y2="66"/>
+    <line x1="1010" y1="54" x2="1018" y2="98"/>
+  </g>
+  <g fill="#2DD4BF">
+    <circle cx="952" cy="72" r="5"/>
+    <circle cx="1010" cy="54" r="6"/>
+    <circle cx="1074" cy="66" r="5"/>
+    <circle cx="1130" cy="88" r="4"/>
+    <circle cx="1018" cy="98" r="7" fill="#FFD34D"/>
+  </g>
+
+  <!-- title -->
+  <text x="600" y="138" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="72" font-weight="700" letter-spacing="10" fill="url(#titleGrad)">SWARM DESK</text>
+  <text x="600" y="182" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="25" fill="#9FB3C8">Swarm-sentiment engine for the H-QRD Trading Desk</text>
+  <text x="600" y="216" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" fill="#5E748C">nine personas debate &#183; one confidence number &#183; a 0.70 gate</text>
+
+  <!-- node wave along the bottom: the school on the move -->
+  <polyline points="30,272 105,256 180,268 255,246 330,258 405,238 480,252 555,234 630,248 705,232 780,246 855,230 930,244 1005,228 1080,242 1155,226"
+            fill="none" stroke="url(#waveGrad)" stroke-width="2" opacity="0.6"/>
+  <g fill="#2DD4BF">
+    <circle cx="30" cy="272" r="4"/>
+    <circle cx="105" cy="256" r="5"/>
+    <circle cx="180" cy="268" r="4"/>
+    <circle cx="255" cy="246" r="6"/>
+    <circle cx="330" cy="258" r="4"/>
+    <circle cx="405" cy="238" r="5"/>
+    <circle cx="480" cy="252" r="4"/>
+    <circle cx="555" cy="234" r="6"/>
+    <circle cx="630" cy="248" r="4"/>
+    <circle cx="705" cy="232" r="5"/>
+    <circle cx="780" cy="246" r="4"/>
+    <circle cx="855" cy="230" r="6"/>
+    <circle cx="930" cy="244" r="4"/>
+    <circle cx="1005" cy="228" r="5"/>
+    <circle cx="1080" cy="242" r="4"/>
+    <circle cx="1155" cy="226" r="6" fill="#FFD34D"/>
+  </g>
+  <g fill="#41618A" opacity="0.8">
+    <circle cx="68" cy="292" r="3"/>
+    <circle cx="218" cy="288" r="3"/>
+    <circle cx="368" cy="292" r="3"/>
+    <circle cx="518" cy="286" r="3"/>
+    <circle cx="668" cy="290" r="3"/>
+    <circle cx="818" cy="286" r="3"/>
+    <circle cx="968" cy="290" r="3"/>
+    <circle cx="1118" cy="284" r="3"/>
+  </g>
+</svg>

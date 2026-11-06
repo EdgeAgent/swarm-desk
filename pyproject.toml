@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "swarm-desk"
+version = "0.1.0"
+description = "Swarm-sentiment engine for the H-QRD Trading Desk: a persona swarm debates an asset and returns one confidence number for the Agent 02 prune gate. Paper/research only."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Kevin Doherty" }]
+requires-python = ">=3.12"
+keywords = ["multi-agent", "swarm", "sentiment", "trading-research", "mcp", "h-qrd"]
+dependencies = []
+
+[project.optional-dependencies]
+mcp = ["mcp>=1.0"]
+
+[project.scripts]
+swarm-desk = "swarm_desk.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/EdgeAgent/swarm-desk"
+Repository = "https://github.com/EdgeAgent/swarm-desk"
+
+[tool.setuptools]
+packages = ["swarm_desk"]
+
+[tool.setuptools.package-data]
+swarm_desk = ["tools.json"]
