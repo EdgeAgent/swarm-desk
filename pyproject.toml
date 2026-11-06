@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "swarm-desk"
-version = "0.1.0"
+version = "0.1.1"
 description = "Swarm-sentiment engine for the H-QRD Trading Desk: a persona swarm debates an asset and returns one confidence number for the Agent 02 prune gate. Paper/research only."
 readme = "README.md"
 license = { text = "MIT" }
@@ -14,7 +14,7 @@ keywords = ["multi-agent", "swarm", "sentiment", "trading-research", "mcp", "h-q
 dependencies = []
 
 [project.optional-dependencies]
-mcp = ["mcp>=1.0"]
+mcp = ["mcp>=1.0,<2.0"]
 
 [project.scripts]
 swarm-desk = "swarm_desk.cli:main"

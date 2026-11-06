@@ -12,6 +12,6 @@ no API keys, no network, and nothing beyond the Python standard library.
 from .engine import SwarmVerdict, gate_for, run_swarm
 from .personas import PERSONAS
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 __all__ = ["PERSONAS", "SwarmVerdict", "gate_for", "run_swarm", "__version__"]

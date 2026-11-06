@@ -216,6 +216,9 @@ swarm-desk/
   the existing `SWARM_LLM_*` config (the blend hook is already in).
 - **Persona calibration** — fit weights/biases against the scored
   ledger instead of hand-set values.
+- **mcp 2.x API port** — the MCP extra is pinned to `mcp>=1.0,<2.0`
+  (the server uses the 1.x API); porting `mcp_server.py` to the
+  mcp 2.x API is future work.
 
 ## Honesty / limits
 
